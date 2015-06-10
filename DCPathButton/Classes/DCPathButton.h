@@ -55,6 +55,9 @@ typedef NS_ENUM(NSUInteger, kDCPathButtonBloomDirection) {
 @property (copy, nonatomic) NSString *foldSoundPath;
 @property (copy, nonatomic) NSString *itemSoundPath;
 
+@property (strong, nonatomic) UIImage *centerImage;
+@property (strong, nonatomic) UIImage *centerHighlightedImage;
+
 @property (assign, nonatomic) BOOL allowCenterButtonRotation;
 
 @property (strong, nonatomic) UIColor *bottomViewColor;
