@@ -57,8 +57,8 @@
         
         // Configure center and high light center image
         //
-        [self setCenterImage:centerImage];
-        [self setCenterHighlightedImage];
+        self.centerImage = centerImage;
+        self.centerHighlightedImage = centerHighlightedImage;
         
         // Init button and image array
         //
@@ -92,36 +92,6 @@
         
     }
     return self;
-}
-
-- (void)setCenterImage:(UIImage*)centerImage
-{
-    self.centerImage = centerImage;
-
-    // Trigger a layout change
-    //
-    if (self.frame.size.width == 0 && self.frame.size.height == 0) {
-        [self configureViewsLayoutWithButtonSize:self.centerImage.size];
-    }
-    else {
-        [self configureViewsLayoutWithButtonSize:self.frame.size];
-        self.dcButtonCenter = self.frame.origin;
-    }
-}
-
-- (void)setCenterHighlightedImage:(UIImage*)centerHighlightedImage
-{
-    self.centerHighlightedImage = centerHighlightedImage;
-
-    // Trigger a layout change
-    //
-    if (self.frame.size.width == 0 && self.frame.size.height == 0) {
-        [self configureViewsLayoutWithButtonSize:self.centerImage.size];
-    }
-    else {
-        [self configureViewsLayoutWithButtonSize:self.frame.size];
-        self.dcButtonCenter = self.frame.origin;
-    }
 }
 
 - (void)configureViewsLayoutWithButtonSize:(CGSize)centerButtonSize {
@@ -234,22 +204,16 @@
 
 #pragma mark - Configure Center Button Images
 
-- (void)setCenterImage:(UIImage *)centerImage {
-    
-    if (!centerImage) {
-        NSLog(@"Load center image failed ... ");
-        return ;
-    }
+- (void)setCenterImage:(UIImage*)centerImage
+{
     _centerImage = centerImage;
+    [_pathCenterButton setImage:self.centerImage forState:UIControlStateNormal];
 }
 
-- (void)setCenterHighlightedImage:(UIImage *)highlightedImage {
-    
-    if (!highlightedImage) {
-        NSLog(@"Load highted image failed ... ");
-        return ;
-    }
-    _centerHighlightedImage = highlightedImage;
+- (void)setCenterHighlightedImage:(UIImage*)centerHighlightedImage
+{
+    _centerHighlightedImage = centerHighlightedImage;
+    [_pathCenterButton setImage:self.centerHighlightedImage forState:UIControlStateHighlighted];
 }
 
 #pragma mark - Configure Button's Center

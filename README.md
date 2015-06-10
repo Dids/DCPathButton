@@ -1,3 +1,4 @@
+NOTE: This is a fork of DCPathButton that adds the ability to change the menu image, mainly because I needed to able to change it to the currently selected menu item.
  
 #DCPathButton 2.1 
 
