@@ -15,6 +15,9 @@
 @property (strong, nonatomic) NSMutableArray *itemButtonImages;
 @property (strong, nonatomic) NSMutableArray *itemButtonHighlightedImages;
 
+@property (strong, nonatomic) UIImage *centerImage;
+@property (strong, nonatomic) UIImage *centerHighlightedImage;
+
 @property (assign, nonatomic) CGSize bloomSize;
 @property (assign, nonatomic) CGSize foldedSize;
 
@@ -54,8 +57,8 @@
         
         // Configure center and high light center image
         //
-        self.centerImage = centerImage;
-        self.centerHighlightedImage = centerHighlightedImage;
+        [self setCenterImage:centerImage];
+        [self setCenterHighlightedImage];
         
         // Init button and image array
         //
@@ -89,6 +92,36 @@
         
     }
     return self;
+}
+
+- (void)setCenterImage:(UIImage*)centerImage
+{
+    self.centerImage = centerImage;
+
+    // Trigger a layout change
+    //
+    if (self.frame.size.width == 0 && self.frame.size.height == 0) {
+        [self configureViewsLayoutWithButtonSize:self.centerImage.size];
+    }
+    else {
+        [self configureViewsLayoutWithButtonSize:self.frame.size];
+        self.dcButtonCenter = self.frame.origin;
+    }
+}
+
+- (void)setCenterHighlightedImage:(UIImage*)centerHighlightedImage
+{
+    self.centerHighlightedImage = centerHighlightedImage;
+
+    // Trigger a layout change
+    //
+    if (self.frame.size.width == 0 && self.frame.size.height == 0) {
+        [self configureViewsLayoutWithButtonSize:self.centerImage.size];
+    }
+    else {
+        [self configureViewsLayoutWithButtonSize:self.frame.size];
+        self.dcButtonCenter = self.frame.origin;
+    }
 }
 
 - (void)configureViewsLayoutWithButtonSize:(CGSize)centerButtonSize {
