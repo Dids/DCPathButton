@@ -15,9 +15,6 @@
 @property (strong, nonatomic) NSMutableArray *itemButtonImages;
 @property (strong, nonatomic) NSMutableArray *itemButtonHighlightedImages;
 
-@property (strong, nonatomic) UIImage *centerImage;
-@property (strong, nonatomic) UIImage *centerHighlightedImage;
-
 @property (assign, nonatomic) CGSize bloomSize;
 @property (assign, nonatomic) CGSize foldedSize;
 
